@@ -19,6 +19,7 @@ class IndexController extends \Phalcon\Mvc\Controller
 	public function indexAction()
 	{
 
-		var_dump($this->request($this->authURL));
+		//var_dump($this->request($this->authURL));
+		var_dump($this->platesNumber->getPlateNumbers("/Public/test3.jpg"));
 	}
 }
