@@ -28,6 +28,14 @@ try
         return $url;
     });
 	
+	/**
+	 * Getin the plates number 
+	 * from the image
+	 */
+	$di->set('platesNumber', function(){
+		return new PlatesNumber();
+	});
+
 	$application = new \Phalcon\Mvc\Application($di);
 	$application->setDI($di);
 
