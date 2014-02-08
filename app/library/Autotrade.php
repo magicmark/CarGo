@@ -5,7 +5,7 @@ use Phalcon\Mvc\User\Component;
 class Autotrade extends Component
 {
 	private $authURL = "https://staging-cws.autotrader.co.uk/CoordinatedWebService/application/crs/connect/hacks/zDk2wtYF";
-
+	private $baseURL = "https://staging-cws.autotrader.co.uk/CoordinatedWebService/application/crs/sss/";
 	private $authToken;
 
 	public function __construct()
@@ -15,7 +15,8 @@ class Autotrade extends Component
 
 		$token = $this->curl
 		              ->request($this->authURL,GET);
-		$this->token = $token;
+
+		$this->authToken = $token;
 	}
 
 
@@ -25,20 +26,34 @@ class Autotrade extends Component
 		$data = array(
 			"VRM" => $plateNumber);
 		
-		$htmlData = $this->curl->request($url,POST,$data);
+		$htmlData = $this->curl->request($url,POST,false,$data);
 
 		$patern = '@<div[^<>]*class="vehicleDetail"[^<>]*>(.*)</div>@';
 
 		preg_match_all($patern,$htmlData,$matches);
 
-		var_dump($matches[1]);
+		$carData = explode(" ", $matches[1][0],6);
+
+		//fixing color of the car
+
+		$carData[0] = substr($carData[0], 0, -1);
+
+		return $carData;
 
 	}
 
-	public function search($data)
+	public function searchAdds($data)
 	{
-		$response;
+		
+		$query = "Make={data[2]}&Model={data[3]}&Year_Rang={data[1]}&colour={data[0]}";
 
+		$requestURL = $this->baseURL."lassified-adverts?".$query;
+
+		var_dump($this->authToken);
+		$header = array("Access-Token={$this->authToken}");
+		$response = $this->curl->request($requestURL,"GET", $header);
+
+		var_dump($response);
 
 		return $response;
 	}

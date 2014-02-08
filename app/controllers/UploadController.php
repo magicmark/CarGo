@@ -14,18 +14,36 @@ class UploadController extends ControllerBase
 		/*
 		 * Testing
 		 */
-		echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
-		echo $this->autotrade->getDetails("P789PEG").'<br/>';
-		echo $this->autotrade->getDetails("S555MPL").'<br/>';
+		
+		//echo $this->autotrade->getDetails("S555MPL").'<br/>';
+		//echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
+		//echo $this->autotrade->getDetails("P789PEG").'<br/>';
 
+		$details = "";
+
+		$platesNumber = array("LR12ZTO");
+
+	 	foreach($platesNumber as $plate)
+	 	{
+
+		 	$details = $this->autotrade->getDetails($plate);	
+		 	if($details != "")
+		 		break;
+	 	}
+
+	 	$results = $this->autotrade->searchAdds($details);
+
+	 	echo "i co?:/";
+	 	var_dump($results);
 	}
 
 	public function carAction() {
 
-    if ($this->request->hasFiles() != true) {
-    	echo json_encode(array('error' => 'No image uploaded!'));
-    	return;
-    }
+    	if ($this->request->hasFiles() != true) 
+    	{
+    		echo json_encode(array('error' => 'No image uploaded!'));
+    		return;
+   		 }
 
     // We only want the first file. Gracefully ignore any extra files as that would be errant behaviour.
     $file = reset($this->request->getUploadedFiles());
@@ -64,10 +82,11 @@ class UploadController extends ControllerBase
 		 		break;
 	 	}
 
-	 	$results = $this->autoTrade->serach($details);
+	 	$results = $this->autoTrade->serachAdds($details);
 
-	 	$resultsJSON = json_encode($results);
+	 	var_dump($results);
+	 	//$resultsJSON = json_encode($results);
 
-	 	echo $resultsJSON;
+	 	//echo $resultsJSON;
 	}
 }
