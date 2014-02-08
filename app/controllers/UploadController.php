@@ -1,6 +1,6 @@
 <?php
 
-class UploadController extends \Phalcon\Mvc\Controller
+class UploadController extends ControllerBase
 {
 
 	private $validImageTypes = array(
@@ -33,8 +33,10 @@ class UploadController extends \Phalcon\Mvc\Controller
  		}
 
  		$name = md5(microtime() . 'Cars.com rule!' . mt_rand()).'.'.pathinfo($file->getName(), PATHINFO_EXTENSION);
+ 		
+ 		$filePath = $this->getCurrentDir().'/plates/' . $name;
+ 		$file->moveTo($filePath);
 
- 		$file->moveTo('/var/www/cargo/plates/' . $name);
 
 	}
 }

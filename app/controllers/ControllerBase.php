@@ -3,9 +3,9 @@
 class ControllerBase extends Phalcon\Mvc\Controller
 {
 
-    protected function initialize()
+    protected function getCurrentDir()
     {
-        Phalcon\Tag::prependTitle('INVO | ');
+        return dirname($_SERVER['PHP_SELF']);
     }
 
     protected function forward($uri){
