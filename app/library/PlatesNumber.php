@@ -16,9 +16,7 @@ class PlatesNumber extends Component
 
     for( $i = 0; $i < count($plateNumberTemp); $i++)
       if( isset($plateNumberTemp[$i][1]))
-        $this->plateNumber[$i] = $plateNumberTemp[$i][1];
-      else
-        $this->plateNumber[$i] = "Error";  
+        $this->plateNumber[] = $plateNumberTemp[$i][1];
 
   	return $this->plateNumber;
   }
