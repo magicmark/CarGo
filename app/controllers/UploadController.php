@@ -11,8 +11,13 @@ class UploadController extends ControllerBase
 
 	public function indexAction()
 	{
+		/*
+		 * Testing
+		 */
+		echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
+		echo $this->autotrade->getDetails("P789PEG").'<br/>';
+		echo $this->autotrade->getDetails("S555MPL").'<br/>';
 
-		//var_dump($this->request($this->authURL));
 	}
 
 	public function carAction() {
@@ -34,9 +39,35 @@ class UploadController extends ControllerBase
 
  		$name = md5(microtime() . 'Cars.com rule!' . mt_rand()).'.'.pathinfo($file->getName(), PATHINFO_EXTENSION);
  		
- 		$filePath = $this->getCurrentDir().'/plates/' . $name;
+ 		$filePath = $this->getCurrentDir().'/public/plates/' . $name;
  		$file->moveTo($filePath);
 
+ 		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
 
+ 		
+ 		/*$
+ 		 *  needed (?)
+ 		 */
+
+ 		/*
+
+ 			$platesJSON = json_encode(json_encode);
+	 		echo $platesJSON;
+	 	*/
+
+	 	$details = "";
+
+	 	foreach($platesNumber as $plate)
+	 	{
+		 	$details = $this->autoTrade->getDetails($plate);	
+		 	if($details != "")
+		 		break;
+	 	}
+
+	 	$results = $this->autoTrade->serach($details);
+
+	 	$resultsJSON = json_encode($results);
+
+	 	echo $resultsJSON;
 	}
 }

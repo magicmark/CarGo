@@ -36,6 +36,14 @@ try
 		return new PlatesNumber();
 	});
 
+	$di->set('autotrade', function(){
+		return new Autotrade();
+	});
+
+	$di->set('curl', function(){
+		return new Curl();
+	});
+
 	$application = new \Phalcon\Mvc\Application($di);
 	$application->setDI($di);
 
@@ -43,7 +51,7 @@ try
 } 	
 catch(\Phalcon\Exception $e)
 {
-     echo "PhalconException: Niggas in paris:", $e->getMessage();
+     echo "Niggas in paris:", $e->getMessage();
 }
 
 ?>

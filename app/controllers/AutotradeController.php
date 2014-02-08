@@ -5,6 +5,10 @@ class AutotradeController extends \Phalcon\Mvc\Controller
 
 	private $authURL = "https://staging-cws.autotrader.co.uk/CoordinatedWebService/application/crs/connect/hacks/zDk2wtYF";
 
+	private parseData()
+	{
+
+	}#
 	private function request($url, $params = null)
 	{
 		$curl = curl_init();
