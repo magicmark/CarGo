@@ -27,7 +27,7 @@ class Autotrade extends Component
 			"VRM" => $plateNumber);
 		
 		$htmlData = $this->curl->request($url,POST,false,$data);
-		#echo $htmlData;
+		echo $htmlData;
 		$patern = '@<div[^<>]*class="vehicleDetail"[^<>]*>(.*)</div>@';
 
 		preg_match_all($patern,$htmlData,$matches);
