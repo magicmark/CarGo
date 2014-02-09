@@ -12,7 +12,7 @@ class PlatesNumber extends Component
     for( $i = $index; $i < count($input); $i++ )
     {
       switch ($input[$i]) {
-        case '0':
+        case "0":
           $result1 = $this->swap($input, $i+1);
           $input[$i] = 'O';
           $result2 = $this->swap($input, $i+1);
@@ -45,7 +45,6 @@ class PlatesNumber extends Component
           break;
       }
     }
-    echo $input;
     $result = array($input);
     return $result;
   }
