@@ -25,7 +25,7 @@ class UploadController extends ControllerBase
 
  		//$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
  		$platesNumber = array("HJ55NZV");
- 		var_dump($platesNumber);
+ 	
  		
  		$details = "";
 
@@ -40,6 +40,8 @@ class UploadController extends ControllerBase
 		 	}
 
 		 }
+
+		var_dump($platesNumber);
 
 	 	if($details != "error404")
 	 	{
@@ -56,6 +58,9 @@ class UploadController extends ControllerBase
 	 	else
 	 		$results = json_encode(array(
 	 			"error" => "Plates not found"));
+
+	 	$searchParam = array(
+			"searchFilters" => $details);
 
 	 	$resultsArray = json_decode($results,true);
 		$resultsArray = array_merge($searchParam,$resultsArray);
