@@ -16,7 +16,7 @@ class PlatesNumber extends Component
           $result1 = $this->swap($input, $i+1);
           $input[$i] = 'O';
           $result2 = $this->swap($input, $i+1);
-          echo $result2 . ' ' . $result1
+          echo $result2 . ' ' . $result1;
           return array_merge($result1, $result2);
           break;
         
