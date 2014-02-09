@@ -112,7 +112,7 @@ class UploadController extends ControllerBase
 	 		echo $platesJSON;
 	 	*/
 
-	 	if($platesNumber != null)
+	 	if(!empty($platesNumber);
 		{
 
 		 	foreach($platesNumber as $plate)
