@@ -122,6 +122,8 @@ class UploadController extends ControllerBase
 		 		break;
 	 	}
 
+	 	var_dump($details);
+
 	 	if($details != "error404")
 	 		$results = $this->autotrade->searchAdds($details);
 	 	else

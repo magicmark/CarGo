@@ -20,13 +20,13 @@ class Curl extends Component
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 		}
 
-		var_dump($header);
+		//var_dump($header);
 		if($header)
 		{
 			curl_setopt($curl,CURLOPT_HTTPHEADER,$header);
 		}
 
-		$output = "";
+		//$output = "";
 		curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
 			CURLOPT_URL => $url
@@ -34,7 +34,7 @@ class Curl extends Component
 
 		$response = curl_exec($curl);
 		$output = curl_getinfo($curl, CURLINFO_HEADER_OUT);
-		//var_dump($output);
+		var_dump($output);
 
 		return $response;
 	}
