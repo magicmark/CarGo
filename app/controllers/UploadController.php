@@ -81,12 +81,12 @@ class UploadController extends ControllerBase
 
 	 	foreach($platesNumber as $plate)
 	 	{
-		 	$details = $this->autoTrade->getDetails($plate);	
+		 	$details = $this->autotrade->getDetails($plate);	
 		 	if($details != "")
 		 		break;
 	 	}
 
-	 	$results = $this->autoTrade->serachAdds($details);
+	 	$results = $this->autotrade->serachAdds($details);
 
 	 	var_dump($results);
 	 	//$resultsJSON = json_encode($results);
