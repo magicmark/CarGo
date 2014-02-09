@@ -70,8 +70,8 @@ class UploadController extends ControllerBase
 	 	//echo $this->maps->getPostCode("53.442775","-2.216688");
 	}
 
-	public function carAction($lat = false, $long = false) {
-
+	public function carAction($lat = false, $long = false) 
+	{
     	if ($this->request->hasFiles() != true) 
     	{
     		echo json_encode(array('error' => 'No image uploaded!'));
