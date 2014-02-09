@@ -13,7 +13,7 @@ class PlatesNumber extends Component
 
     $plateNumberTemp = array();
 
-    var_dump($output);
+    //var_dump($output);
 
     for( $i = 0; $i < count($output); $i++)
       preg_match("/^[ ]*\- ([A-za-z0-9]*)/", $output[$i], $plateNumberTemp[$i-1] );

@@ -32,7 +32,10 @@ class Autotrade extends Component
 
 		preg_match_all($patern,$htmlData,$matches);
 
-		$carData = explode(" ", $matches[1][0],6);
+		if(!empty($matches))
+			$carData = explode(" ", $matches[1][0],6);
+		else
+			return "error404";
 
 		//fixing color of the car
 
