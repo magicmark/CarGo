@@ -22,25 +22,37 @@ class Autotrade extends Component
 
 	public function getDetails($plateNumber)
 	{
-		$url = "http://www.autotrader.co.uk/vehiclecheck";
+
+		$plateNumberNew = substr($plateNumber,0,4)."%20".substr($plateNumber,4);
+
+		$url = "http://www.carcheckuk.co.uk/results.php?vrm={$plateNumberNew}";
+		//$url = urlencode($url);
+		//echo $url;
 		$data = array(
 			"VRM" => $plateNumber);
 		
-		$htmlData = $this->curl->request($url,POST,false,$data);
-		echo $htmlData;
-		$patern = '@<div[^<>]*class="vehicleDetail"[^<>]*>(.*)</div>@';
+		$htmlData = $this->curl->request($url,GET,false,false);
+		$htmlData = str_replace("\n", "", $htmlData);
+		$htmlData = str_replace("\r", "", $htmlData);
+		$htmlData = str_replace("\t", "", $htmlData);
+
+		//echo $htmlData;
+		$patern = '@<td[^<>]*class="result_car_info"[^<>]*>(.*)</td>@';
 
 		preg_match_all($patern,$htmlData,$matches);
+		$patern = '@<br/>(.*)<br/><label>Make</label><br/>(.*)<br/><br/></td><td class="result_car_info"><label>Model</label><br/>(.*)<br/><br/><label>Colour</label><br/>(.*)<br/><br/>@';
+		preg_match_all($patern,$matches[1][0],$matches);
+		//var_dump($matches);
 
-
-		if(!empty($matches[1]))
-			$carData = explode(" ", $matches[1][0],6);
+		if(!empty($matches[2]))
+			$carData = array($matches[2][0],$matches[3][0],$matches[4][0]);
 		else
 			return "error404";
 
 		//fixing color of the car
 
-		$carData[0] = substr($carData[0], 0, -1);
+		//$carData[0] = substr($carData[0], 0, -1);
+		var_dump($carData);
 
 		return $carData;
 

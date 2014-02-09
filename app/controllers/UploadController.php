@@ -11,20 +11,21 @@ class UploadController extends ControllerBase
 
 	public function locationAction($lat, $long)
 	{
-		echo $this->maps->getPostCode($lat,$long);
+		$this->maps->getPostCode($lat,$long);
 	}
 
 	public function indexAction()
 	{
-		/*
+		/*WW
 		 * Testing
 		 */
 		
-		//echo $this->autotrade->getDetails("S555MPL").'<br/>';
+		//$this->autotrade->getDetails("S555MPL").'<br/>';
+
 		// echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
 		//echo $this->autotrade->getDetails("P789PEG").'<br/>';
-		$postcode =  $this->maps->getPostCode("56","2.216688");
-	 	echo $this->maps->getPostCode("53.442775","-2.216688");
+		//$postcode =  $this->maps->getPostCode("56","2.216688");
+	 	//echo $this->maps->getPostCode("53.442775","-2.216688");
 	}
 
 	public function carAction($lat = false, $long = false) 
@@ -52,18 +53,8 @@ class UploadController extends ControllerBase
 
  		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
 
- 		var_dump($platesNumber);
+ 		//var_dump($platesNumber);
  		
- 		/*$
- 		 *  needed (?)
- 		 */
-
- 		/*
-
- 			$platesJSON = json_encode(json_encode);
-	 		echo $platesJSON;
-	 	*/
-
 
 	 	if(!empty($platesNumber))
 		{
@@ -93,13 +84,18 @@ class UploadController extends ControllerBase
 	 		$results = json_encode(array(
 	 			"error" => "Plates not found"));
 
-	 	echo $results;
+	 	$resultsArray = json_decode($results,true);
+		$resultsArray = array_merge($searchParam,$resultsArray);
+
+		$results = json_encode($resultsArray);
+
+		echo $results;
 
 	}
 
 	public function testAction($lat = false, $long = false)
 	{
-		$details = "BLACK, 2005 HONDA CIVIC TYPE-R 3 DOOR HATCHBACK";
+		$details = "BLACK, 2005 AUDI A3 TYPE-R 3 DOOR HATCHBACK";
 		$carData = explode(" ", $details);
 		$carData[0] = substr($carData[0], 0, -1);
 
