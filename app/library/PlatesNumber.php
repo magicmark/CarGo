@@ -56,11 +56,11 @@ class PlatesNumber extends Component
     exec("/home/steve/plateRecognition/openalpr/src/alpr ". $image ." -c eu -r /home/steve/plateRecognition/openalpr/runtime_data/", $output2);
     exec("/home/steve/plateRecognition/openalpr/src/alpr ". $image ." -c us -r /home/steve/plateRecognition/openalpr/runtime_data/", $output3);
     
-    $outputPre = array_merge($output1, $output2,$output3);
+    $output = array_merge($output1, $output2,$output3);
 
-    $output = array();
+    /*$output = array();
     for( $i = 0; $i < count($outputPre); $i++)
-      array_merge($output, $this->swap($outputPre[$i], 0));
+      array_merge($output, $this->swap($outputPre[$i], 0));*/
     
     $plateNumberTemp = array();
 
@@ -71,7 +71,8 @@ class PlatesNumber extends Component
 
     for( $i = 0; $i < count($plateNumberTemp); $i++)
       if( isset($plateNumberTemp[$i][1]))
-        $this->plateNumber[] = $plateNumberTemp[$i][1];
+        // $this->plateNumber[] = $plateNumberTemp[$i][1];
+        array_merge( $this->plateNumber[], swap($plateNumberTemp[$i][1], 0));
 
   	return $this->plateNumber;
   }
