@@ -57,7 +57,7 @@ class PlatesNumber extends Component
 
     $output = array();
     for( $i = 0; $i < count($outputPre); $i++)
-      array_merge($output, $this->swap($outputPre, 0));
+      array_merge($output, $this->swap($outputPre[$i], 0));
     
     $plateNumberTemp = array();
 
