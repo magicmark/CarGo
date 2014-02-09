@@ -11,7 +11,7 @@ class PlatesNumber extends Component
   {
     for( $i = $index; $i < count($input); $i++ )
     {
-      echo $input[$i] . " " . count($input) . " ";
+      echo $input[$i] . " " . count($input) . " " . $input . " END " ;
       switch ($input[$i]) {
         case "0":
           $result1 = $this->swap($input, $i+1);
