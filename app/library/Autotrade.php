@@ -45,12 +45,12 @@ class Autotrade extends Component
 	public function searchAdds($data)
 	{
 		
-		$query = "Make={data[2]}&Model={data[3]}&Year_Rang={data[1]}&colour={data[0]}";
+		$query = "Make={$data[2]}&Model={$data[3]}&Colour=Silver";
 
-		$requestURL = $this->baseURL."lassified-adverts?".$query;
+		$requestURL = $this->baseURL."classified-adverts?".$query;
 
 		var_dump($this->authToken);
-		$header = array("Access-Token={$this->authToken}");
+		$header = array("Access-Token: {$this->authToken}");
 		$response = $this->curl->request($requestURL,"GET", $header);
 
 		var_dump($response);
