@@ -97,7 +97,7 @@ class UploadController extends ControllerBase
 
 	}
 
-	public function testAction()
+	public function testAction($lat = false, $long = false)
 	{
 		$details = "BLACK, 2005 HONDA CIVIC TYPE-R 3 DOOR HATCHBACK";
 		$carData = explode(" ", $details);
@@ -107,9 +107,14 @@ class UploadController extends ControllerBase
 			"searchFilters" => $carData);
 
 	
-
-		$results = $this->autotrade->searchAdds($carData);
-
+        if( $lat && $long )
+	 	{
+	        $postcode = $this->maps->getPostCode($lat, $long);
+		    $results = $this->autotrade->searchAdds($carData, $postcode);
+		}
+		else
+			$results = $this->autotrade->searchAdds($carData);
+        echo $results;
 		$resultsArray = json_decode($results,true);
 		$resultsArray = array_merge($searchParam,$resultsArray);
 

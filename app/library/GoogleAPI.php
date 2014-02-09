@@ -18,11 +18,10 @@ class GoogleAPI extends Component
 			{
 				if( $element->{"types"}[0] == "postal_code" )
 				{
-					return $element->{"long_name"};
+					return preg_replace('/\s/', '', $element->{"long_name"});
 				}
 			}
 		}
-
         return "Error with lattitude and longitude!";
 	}
 }
