@@ -32,6 +32,8 @@ class Autotrade extends Component
 
 		preg_match_all($patern,$htmlData,$matches);
 
+		var_dump($matches);
+		
 		if(!empty($matches[1]))
 			$carData = explode(" ", $matches[1][0],6);
 		else
