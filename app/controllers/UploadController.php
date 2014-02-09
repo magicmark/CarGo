@@ -14,13 +14,55 @@ class UploadController extends ControllerBase
 		$this->maps->getPostCode($lat,$long);
 	}
 
-	public function indexAction()
+	public function indexAction($lat = false, $long = false)
 	{
 		/*WW
 		 * Testing
 		 */
 		
-		//$this->autotrade->getDetails("S555MPL").'<br/>';
+		$name = "test4.jpg";
+		$filePath = '/var/www/cargo/public/plates/' . $name;
+
+ 		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
+ 		
+ 		//var_dump($platesNumber);
+ 		
+ 		$details = "";
+
+	 	if(!empty($platesNumber))
+		{
+
+		 	foreach($platesNumber as $plate)
+		 	{
+			 	$details = $this->autotrade->getDetails($plate);	
+			 	if($details != "error404")
+			 		break;
+		 	}
+
+		 }
+
+	 	if($details != "error404")
+	 	{
+	 		if( $lat && $long )
+	 		{
+	          $postcode = $this->maps->getPostCode($lat, $long);
+	 		  $results = $this->autotrade->searchAdds($details, $postcode);
+	 		}
+	 		else
+	 		{
+	 		  $results = $this->autotrade->searchAdds($details);
+	 		}
+	 	}
+	 	else
+	 		$results = json_encode(array(
+	 			"error" => "Plates not found"));
+
+	 	$resultsArray = json_decode($results,true);
+		$resultsArray = array_merge($searchParam,$resultsArray);
+
+		$results = json_encode($resultsArray);
+
+		echo $results;
 
 		// echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
 		//echo $this->autotrade->getDetails("P789PEG").'<br/>';

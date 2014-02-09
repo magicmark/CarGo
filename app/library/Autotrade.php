@@ -61,7 +61,7 @@ class Autotrade extends Component
 	public function searchAdds($data, $postcode = false)
 	{
 		
-		$query = "Make={$data[2]}&Model={$data[3]}";
+		$query = "Make={$data[0]}&Model={$data[1]}&Colour={$data[2]}";
 		if($postcode)
 		  $query .= "&Postcode={$postcode}";
 		//$query = "options"	
