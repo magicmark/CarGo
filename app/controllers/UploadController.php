@@ -98,7 +98,6 @@ class UploadController extends ControllerBase
  		$filePath = '/var/www/cargo/public/plates/' . $name;
  		$file->moveTo($filePath);
 
- 		var_dump($filePath);
  		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
 
  		var_dump($platesNumber);
@@ -113,16 +112,17 @@ class UploadController extends ControllerBase
 	 		echo $platesJSON;
 	 	*/
 
-	 	$details = "";
+	 	if($platesNumber != null)
+		{
 
-	 	foreach($platesNumber as $plate)
-	 	{
-		 	$details = $this->autotrade->getDetails($plate);	
-		 	if($details != "")
-		 		break;
-	 	}
+		 	foreach($platesNumber as $plate)
+		 	{
+			 	$details = $this->autotrade->getDetails($plate);	
+			 	if($details != "")
+			 		break;
+		 	}
 
-	 	var_dump($details);
+		 }
 
 	 	if($details != "error404")
 	 		$results = $this->autotrade->searchAdds($details);
@@ -130,9 +130,5 @@ class UploadController extends ControllerBase
 	 		$results = json_encode(array(
 	 			"error" => "Plates not found"));
 
-	 	var_dump($results);
-	 	//$resultsJSON = json_encode($results);
-
-	 	//echo $resultsJSON;
 	}
 }
