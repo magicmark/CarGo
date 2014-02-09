@@ -9,6 +9,11 @@ class UploadController extends ControllerBase
 		'image/gif'
 		);
 
+	public function locationAction($lat,$lon)
+	{
+		echo $this->maps->getPostCode($lat,$lon);
+	}
+
 	public function indexAction()
 	{
 		/*
@@ -16,10 +21,10 @@ class UploadController extends ControllerBase
 		 */
 		
 		//echo $this->autotrade->getDetails("S555MPL").'<br/>';
-		 echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
+		// echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
 		//echo $this->autotrade->getDetails("P789PEG").'<br/>';
-
-	 	
+		echo $this->maps->getPostCode("56","2.216688");
+	 	echo $this->maps->getPostCode("53.442775","-2.216688");
 	}
 
 	public function carAction() {

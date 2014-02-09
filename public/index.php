@@ -44,6 +44,10 @@ try
 		return new Curl();
 	});
 
+	$di->set('maps', function(){
+		return new GoogleAPI();
+	});
+
 	$application = new \Phalcon\Mvc\Application($di);
 	$application->setDI($di);
 
