@@ -77,9 +77,6 @@ class UploadController extends ControllerBase
 
 		 }
 
-		if( $lat && $long )
-	        $postcode = $this->maps->getPostCode($lat, $long);
-
 	 	if($details != "error404")
 	 	{
 	 		if( $lat && $long )
@@ -95,6 +92,8 @@ class UploadController extends ControllerBase
 	 	else
 	 		$results = json_encode(array(
 	 			"error" => "Plates not found"));
+
+	 	echo $results;
 
 	}
 

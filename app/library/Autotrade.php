@@ -51,7 +51,7 @@ class Autotrade extends Component
 		
 		$query = "Make={$data[2]}&Model={$data[3]}";
 		if($postcode)
-			$query .= "&postcode={$postcode}";
+			$query .= "&Postcode={$postcode}";
 
 		$requestURL = $this->baseURL."classified-adverts?".$query;
 
