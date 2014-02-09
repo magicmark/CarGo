@@ -68,7 +68,7 @@ class UploadController extends ControllerBase
 	 	if($details != "error404")
 	 		$results = $this->autotrade->searchAdds($details);
 	 	else
-	 		$result = json_encode(array(
+	 		$results = json_encode(array(
 	 			"error" => "Plates not found"));
 
 	 	var_dump($results);
