@@ -72,7 +72,7 @@ class PlatesNumber extends Component
     for( $i = 0; $i < count($plateNumberTemp); $i++)
       if( isset($plateNumberTemp[$i][1]))
         // $this->plateNumber[] = $plateNumberTemp[$i][1];
-        array_merge( $this->plateNumber[], swap($plateNumberTemp[$i][1], 0));
+        array_merge( $this->plateNumber, swap($plateNumberTemp[$i][1], 0));
 
   	return $this->plateNumber;
   }
