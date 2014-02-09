@@ -114,7 +114,7 @@ class UploadController extends ControllerBase
 		}
 		else
 			$results = $this->autotrade->searchAdds($carData);
-        echo $results;
+        #echo $results;
 		$resultsArray = json_decode($results,true);
 		$resultsArray = array_merge($searchParam,$resultsArray);
 
