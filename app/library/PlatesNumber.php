@@ -15,6 +15,8 @@ class PlatesNumber extends Component
         case '0':
           $result1 = $this->swap($input, $i+1);
           $input[$i] = 'O';
+          if( $input == $result1 )
+            echo "ERROR";
           $result2 = $this->swap($input, $i+1);
           return array_merge($result1, $result2);
           break;
