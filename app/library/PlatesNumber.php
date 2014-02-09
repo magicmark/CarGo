@@ -16,7 +16,6 @@ class PlatesNumber extends Component
           $result1 = $this->swap($input, $i+1);
           $input[$i] = 'O';
           $result2 = $this->swap($input, $i+1);
-          echo $result2 . ' ' . $result1;
           return array_merge($result1, $result2);
           break;
         
@@ -68,13 +67,15 @@ class PlatesNumber extends Component
     for( $i = 0; $i < count($output); $i++)
       preg_match("/^[ ]*\- ([A-za-z0-9]*)/", $output[$i], $plateNumberTemp[$i-1] );
 
+
+
     $this->plateNumber = array();
     for( $i = 0; $i < count($plateNumberTemp); $i++)
       if( isset($plateNumberTemp[$i][1]))
         // $this->plateNumber[] = $plateNumberTemp[$i][1];
         $this->plateNumber = array_merge( $this->plateNumber, $this->swap($plateNumberTemp[$i][1], 0));
 
-  	return $this->plateNumber;
+  	return array_unique($this->plateNumber);
   }
 
 }
