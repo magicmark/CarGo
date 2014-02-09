@@ -41,7 +41,7 @@ class UploadController extends ControllerBase
 
 		 }
 
-		var_dump($platesNumber);
+		//var_dump($platesNumber);
 
 	 	if($details != "error404")
 	 	{
@@ -114,6 +114,9 @@ class UploadController extends ControllerBase
 		 	}
 
 		 }
+
+		 $searchParam = array(
+			"searchFilters" => $details);
 
 	 	if($details != "error404")
 	 	{

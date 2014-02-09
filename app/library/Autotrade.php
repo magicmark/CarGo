@@ -52,7 +52,7 @@ class Autotrade extends Component
 		//fixing color of the car
 
 		//$carData[0] = substr($carData[0], 0, -1);
-		var_dump($carData);
+		//var_dump($carData);
 
 		return $carData;
 
