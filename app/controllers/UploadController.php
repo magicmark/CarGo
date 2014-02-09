@@ -38,6 +38,37 @@ class UploadController extends ControllerBase
 	 	var_dump($results);
 
 	 	*/
+	 	$name;
+	 	$filePath = '/var/www/cargo/public/plates/' . $name;
+
+	 	var_dump($filePath);
+ 		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
+
+ 		var_dump($platesNumber);
+ 		
+ 		/*$
+ 		 *  needed (?)
+ 		 */
+
+ 		/*
+
+ 			$platesJSON = json_encode(json_encode);
+	 		echo $platesJSON;
+	 	*/
+
+	 	$details = "";
+
+	 	foreach($platesNumber as $plate)
+	 	{
+		 	$details = $this->autotrade->getDetails($plate);	
+		 	if($details != "")
+		 		break;
+	 	}
+
+	 	$results = $this->autotrade->serachAdds($details);
+
+	 	var_dump($results);
+	 	
 	}
 
 	public function carAction() {
@@ -63,6 +94,7 @@ class UploadController extends ControllerBase
  		$filePath = '/var/www/cargo/public/plates/' . $name;
  		$file->moveTo($filePath);
 
+ 		var_dump($filePath);
  		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
 
  		var_dump($platesNumber);
