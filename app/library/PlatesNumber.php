@@ -44,7 +44,7 @@ class PlatesNumber extends Component
           break;
       }
     }
-    return $input;
+    return new array($input);
   }
 
   public function getPlateNumbers( $image = null )
