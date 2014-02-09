@@ -9,9 +9,9 @@ class UploadController extends ControllerBase
 		'image/gif'
 		);
 
-	public function locationAction($lat,$lon)
+	public function locationAction($lat, $long)
 	{
-		echo $this->maps->getPostCode($lat,$lon);
+		echo $this->maps->getPostCode($lat,$long);
 	}
 
 	public function indexAction()
@@ -23,11 +23,11 @@ class UploadController extends ControllerBase
 		//echo $this->autotrade->getDetails("S555MPL").'<br/>';
 		// echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
 		//echo $this->autotrade->getDetails("P789PEG").'<br/>';
-		echo $this->maps->getPostCode("56","2.216688");
+		$postcode =  $this->maps->getPostCode("56","2.216688");
 	 	echo $this->maps->getPostCode("53.442775","-2.216688");
 	}
 
-	public function carAction() {
+	public function carAction($lat = false, $long = false) {
 
     	if ($this->request->hasFiles() != true) 
     	{
@@ -35,8 +35,8 @@ class UploadController extends ControllerBase
     		return;
    		 }
 
-    // We only want the first file. Gracefully ignore any extra files as that would be errant behaviour.
-    $file = reset($this->request->getUploadedFiles());
+        // We only want the first file. Gracefully ignore any extra files as that would be errant behaviour.
+        $file = reset($this->request->getUploadedFiles());
  		
  		$type = ($file->getRealType() != '') ? $file->getRealType() : $file->getType();
 
@@ -64,6 +64,7 @@ class UploadController extends ControllerBase
 	 		echo $platesJSON;
 	 	*/
 
+
 	 	if(!empty($platesNumber))
 		{
 
@@ -76,8 +77,21 @@ class UploadController extends ControllerBase
 
 		 }
 
+		if( $lat && $long )
+	        $postcode = $this->maps->getPostCode($lat, $long);
+
 	 	if($details != "error404")
-	 		$results = $this->autotrade->searchAdds($details);
+	 	{
+	 		if( $lat && $long )
+	 		{
+	          $postcode = $this->maps->getPostCode($lat, $long);
+	 		  $results = $this->autotrade->searchAdds($details, $postcode);
+	 		}
+	 		else
+	 		{
+	 		  $results = $this->autotrade->searchAdds($details);
+	 		}
+	 	}
 	 	else
 	 		$results = json_encode(array(
 	 			"error" => "Plates not found"));
