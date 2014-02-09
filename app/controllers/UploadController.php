@@ -145,9 +145,8 @@ class UploadController extends ControllerBase
 
 	public function testAction($lat = false, $long = false)
 	{
-		$details = "BLACK, 2005 AUDI A3 TYPE-R 3 DOOR HATCHBACK";
-		$carData = explode(" ", $details);
-		$carData[0] = substr($carData[0], 0, -1);
+		$details = "SILVER, 2007 ASTON MARTIN DB9 AUTO COUPE";
+		$carData = array("ASTON MARTIN","DB9","SILVER","2007","AUTO COUPE");
 
 		$searchParam = array(
 			"searchFilters" => $carData);
