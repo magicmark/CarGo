@@ -41,6 +41,7 @@ class UploadController extends ControllerBase
 	 	$name = "test4.jpg";
 	 	$filePath = '/var/www/cargo/public/plates/'.$name;
 
+		var_dump($filePath);
  		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
 
  		var_dump($platesNumber);
@@ -64,7 +65,11 @@ class UploadController extends ControllerBase
 		 		break;
 	 	}
 
-	 	$results = $this->autotrade->serachAdds($details);
+	 	if($details != "error404")
+	 		$results = $this->autotrade->serachAdds($details);
+	 	else
+	 		$result = json_encode(array(
+	 			"error" => "Plates not found"));
 
 	 	var_dump($results);
 	 	
