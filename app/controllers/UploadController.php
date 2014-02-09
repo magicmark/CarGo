@@ -25,7 +25,7 @@ class UploadController extends ControllerBase
 
  		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
  		
- 		//var_dump($platesNumber);
+ 		var_dump($platesNumber);
  		
  		$details = "";
 
