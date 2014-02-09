@@ -16,28 +16,28 @@ class PlatesNumber extends Component
           $result1 = swap($input, $i+1);
           $input[$i] = 'O';
           $result2 = swap($input, $i+1);
-          return array_merge(result1, result2)
+          return array_merge(result1, result2);
           break;
         
         case 'O':
           $result1 = swap($input, $i+1);
           $input[$i] = '0';
           $result2 = swap($input, $i+1);
-          return array_merge(result1, result2)
+          return array_merge(result1, result2);
           break;
 
         case '5':
           $result1 = swap($input, $i+1);
           $input[$i] = 'S';
           $result2 = swap($input, $i+1);
-          return array_merge(result1, result2)
+          return array_merge(result1, result2);
           break;
 
         case 'S':
           $result1 = swap($input, $i+1);
           $input[$i] = '5';
           $result2 = swap($input, $i+1);
-          return array_merge(result1, result2)
+          return array_merge(result1, result2);
           break;
 
         default:
