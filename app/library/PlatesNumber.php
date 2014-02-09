@@ -46,7 +46,6 @@ class PlatesNumber extends Component
     }
     $result = array();
     $result[] = $input;
-    echo $result[0];
     return $result;
   }
 
