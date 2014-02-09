@@ -20,11 +20,11 @@ class UploadController extends ControllerBase
 		 * Testing
 		 */
 		
-		$name = "test4.jpg";
-		$filePath = '/var/www/cargo/public/plates/' . $name;
+		//$name = "test4.jpg";
+		//$filePath = '/var/www/cargo/public/plates/' . $name;
 
- 		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
- 		
+ 		//$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
+ 		$platesNumber = array("HJ55NZV");
  		var_dump($platesNumber);
  		
  		$details = "";
