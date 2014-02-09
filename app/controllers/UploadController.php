@@ -38,7 +38,7 @@ class UploadController extends ControllerBase
 	 	var_dump($results);
 
 	 	*/
-	 	$name = "6d8aa31167a692c920c5acc87bd504d2.jpg";
+	 	$name = "test4.jpg";
 	 	$filePath = '/var/www/cargo/public/plates/'.$name;
 
 	 	var_dump($filePath);
