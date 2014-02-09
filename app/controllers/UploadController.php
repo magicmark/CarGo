@@ -19,6 +19,7 @@ class UploadController extends ControllerBase
 		//echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
 		//echo $this->autotrade->getDetails("P789PEG").'<br/>';
 
+		/*
 		$details = "";
 
 		$platesNumber = array("LR12ZTO");
@@ -35,6 +36,8 @@ class UploadController extends ControllerBase
 
 	 	echo "i co?:/";
 	 	var_dump($results);
+
+	 	*/
 	}
 
 	public function carAction() {
@@ -62,6 +65,7 @@ class UploadController extends ControllerBase
 
  		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
 
+ 		var_dump($platesNumber);
  		
  		/*$
  		 *  needed (?)
