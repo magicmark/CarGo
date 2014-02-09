@@ -44,7 +44,7 @@ class PlatesNumber extends Component
           break;
       }
     }
-    $result = array();
+    $result = array($input);
     $result[] = $input;
     return $result;
   }
