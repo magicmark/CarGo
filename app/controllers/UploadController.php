@@ -19,59 +19,6 @@ class UploadController extends ControllerBase
 		 echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
 		//echo $this->autotrade->getDetails("P789PEG").'<br/>';
 
-		/*
-		$details = "";
-
-		$platesNumber = array("LR12ZTO");
-
-	 	foreach($platesNumber as $plate)
-	 	{
-
-		 	$details = $this->autotrade->getDetails($plate);	
-		 	if($details != "")
-		 		break;
-	 	}
-
-	 	$results = $this->autotrade->searchAdds($details);
-
-	 	echo "i co?:/";
-	 	var_dump($results);
-
-	 	*/
-	 	$name = "test4.jpg";
-	 	$filePath = '/var/www/cargo/public/plates/'.$name;
-
-		var_dump($filePath);
- 		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
-
- 		var_dump($platesNumber);
- 		
- 		/*$
- 		 *  needed (?)
- 		 */
-
- 		/*
-
- 			$platesJSON = json_encode(json_encode);
-	 		echo $platesJSON;
-	 	*/
-
-	 	$details = "";
-
-	 	foreach($platesNumber as $plate)
-	 	{
-		 	$details = $this->autotrade->getDetails($plate);	
-		 	if($details != "")
-		 		break;
-	 	}
-
-	 	if($details != "error404")
-	 		$results = $this->autotrade->searchAdds($details);
-	 	else
-	 		$results = json_encode(array(
-	 			"error" => "Plates not found"));
-
-	 	var_dump($results);
 	 	
 	}
 
@@ -130,5 +77,16 @@ class UploadController extends ControllerBase
 	 		$results = json_encode(array(
 	 			"error" => "Plates not found"));
 
+	}
+
+	public function testAction()
+	{
+		$details = "BLACK, 2005 HONDA CIVIC TYPE-R 3 DOOR HATCHBACK";
+		$carData = explode(" ", $details);
+		$carData[0] = substr($carData[0], 0, -1);
+
+		$results = $this->autotrade->searchAdds($carData);
+
+		echo $results;
 	}
 }

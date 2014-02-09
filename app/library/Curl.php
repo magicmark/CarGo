@@ -34,7 +34,7 @@ class Curl extends Component
 
 		$response = curl_exec($curl);
 		$output = curl_getinfo($curl, CURLINFO_HEADER_OUT);
-		var_dump($output);
+		//echo ($output);
 
 		return $response;
 	}

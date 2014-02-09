@@ -22,19 +22,18 @@ class Autotrade extends Component
 
 	public function getDetails($plateNumber)
 	{
-		$url = "www.vehiclecheck.co.uk";
+		$url = "http://www.autotrader.co.uk/vehiclecheck";
 		$data = array(
 			"VRM" => $plateNumber);
 		
 		$htmlData = $this->curl->request($url,POST,false,$data);
-
+		echo $htmlData;
 		$patern = '@<div[^<>]*class="vehicleDetail"[^<>]*>(.*)</div>@';
 
 		preg_match_all($patern,$htmlData,$matches);
 
-		var_dump($matches);
-		
-		if(!empty($matches[1]) && count($matches[1]) != 0)
+
+		if(!empty($matches[1]))
 			$carData = explode(" ", $matches[1][0],6);
 		else
 			return "error404";
@@ -54,11 +53,8 @@ class Autotrade extends Component
 
 		$requestURL = $this->baseURL."classified-adverts?".$query;
 
-		var_dump($this->authToken);
 		$header = array("Access-Token: {$this->authToken}");
 		$response = $this->curl->request($requestURL,"GET", $header);
-
-		var_dump($response);
 
 		return $response;
 	}
