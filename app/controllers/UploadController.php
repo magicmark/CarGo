@@ -60,7 +60,7 @@ class UploadController extends ControllerBase
 
  		$name = md5(microtime() . 'Cars.com rule!' . mt_rand()).'.'.pathinfo($file->getName(), PATHINFO_EXTENSION);
  		
- 		$filePath = '/var/www/public/plates/' . $name;
+ 		$filePath = '/var/www/cargo/public/plates/' . $name;
  		$file->moveTo($filePath);
 
  		$platesNumber = $this->platesNumber->getPlateNumbers($filePath);
