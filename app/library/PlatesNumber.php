@@ -9,7 +9,7 @@ class PlatesNumber extends Component
 
   public function getPlateNumbers( $image = null )
   {
-    exec("/home/steve/plateRecognition/openalpr/src/alpr ". $image ." -r /home/steve/plateRecognition/openalpr/runtime_data/", $output);
+    exec("/home/steve/plateRecognition/openalpr/src/alpr ". $image ." -c eu -r /home/steve/plateRecognition/openalpr/runtime_data/", $output);
 
     $plateNumberTemp = array();
 
