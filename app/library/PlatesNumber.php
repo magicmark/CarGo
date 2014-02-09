@@ -9,9 +9,9 @@ class PlatesNumber extends Component
 
   private function swap( $input, $index )
   {
-    for( $i = $index; $i < count($input); $i++ )
+    for( $i = $index; $i < strlen($input); $i++ )
     {
-      echo $input[$i] . " " . count($input) . " " . $input . " END " ;
+      echo $input[$i] . " " . strlen($input) . " " . $input . " END " ;
       switch ($input[$i]) {
         case "0":
           $result1 = $this->swap($input, $i+1);
