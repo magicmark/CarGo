@@ -34,7 +34,7 @@ class Autotrade extends Component
 
 		var_dump($matches);
 		
-		if(!empty($matches[1]) && count($matches[1]) != 0))
+		if(!empty($matches[1]) && count($matches[1]) != 0)
 			$carData = explode(" ", $matches[1][0],6);
 		else
 			return "error404";
