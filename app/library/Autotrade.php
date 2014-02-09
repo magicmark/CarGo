@@ -49,7 +49,7 @@ class Autotrade extends Component
 	public function searchAdds($data)
 	{
 		
-		$query = "Make={$data[2]}&Model={$data[3]}&Colour=Silver";
+		$query = "Make={$data[2]}&Model={$data[3]}";
 
 		$requestURL = $this->baseURL."classified-adverts?".$query;
 

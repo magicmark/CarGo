@@ -85,7 +85,17 @@ class UploadController extends ControllerBase
 		$carData = explode(" ", $details);
 		$carData[0] = substr($carData[0], 0, -1);
 
+		$searchParam = array(
+			"searchFilters" => $carData);
+
+	
+
 		$results = $this->autotrade->searchAdds($carData);
+
+		$resultsArray = json_decode($results,true);
+		$resultsArray = array_merge($searchParam,$resultsArray);
+
+		$results = json_encode($resultsArray);
 
 		echo $results;
 	}
