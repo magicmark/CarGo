@@ -16,7 +16,7 @@ class UploadController extends ControllerBase
 		 */
 		
 		//echo $this->autotrade->getDetails("S555MPL").'<br/>';
-		//echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
+		 echo $this->autotrade->getDetails("LR12ZTO").'<br/>';
 		//echo $this->autotrade->getDetails("P789PEG").'<br/>';
 
 		/*
@@ -118,7 +118,7 @@ class UploadController extends ControllerBase
 		 	foreach($platesNumber as $plate)
 		 	{
 			 	$details = $this->autotrade->getDetails($plate);	
-			 	if($details != "")
+			 	if($details != "error404")
 			 		break;
 		 	}
 
